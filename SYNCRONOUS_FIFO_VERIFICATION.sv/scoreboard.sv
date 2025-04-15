@@ -29,7 +29,7 @@ class scoreboard;
           
         join 
         
-   //chk();
+   chk();
   // tr.display("SCB");
           
       -> start;
@@ -47,6 +47,7 @@ class scoreboard;
   
   
   task push();
+    
     
     if(tr.push && !tr.full && !tr.rst)begin
       que.push_back(tr.d_in);
@@ -69,9 +70,20 @@ class scoreboard;
       
     end
     
+    else if(tr.pop && tr.empty) begin 
+      
+      temp = que.pop_front();
+     
+      $display("poped data:%d expected:%d",temp,tr.d_out);
+      $display("#######  FIFO EMPTY ######");
+      
+      $display("%p",que);
+    end
+    else temp=0;
+    
 	endtask
   
-/*  task chk();
+  task chk();
     
     if(temp==tr.d_out)
     
@@ -79,10 +91,10 @@ class scoreboard;
     
     	else begin
           
-          $display("poped data:%d | Expected:%d",temp,tr.d_out);
+         // $display("poped data:%d | Expected:%d",temp,tr.d_out);
           $display("########  FAILED  #########");
         end
-  	endtask  */  
+  	endtask    
 			
 endclass
         
