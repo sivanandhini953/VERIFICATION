@@ -20,10 +20,10 @@ class driver;
       gen2drv.get(tr);
       @(posedge vif.clk)
       
-      vif.rst<=tr.rst;
-      vif.push<=tr.push;
-      vif.pop<=tr.pop;
-      vif.d_in<=tr.d_in;
+      vif.rst=tr.rst;
+      vif.push=tr.push;
+      vif.pop=tr.pop;
+      vif.d_in=tr.d_in;
       
       tr.display("DRV");
       
